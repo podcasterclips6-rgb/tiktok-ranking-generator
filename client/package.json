@@ -1,0 +1,13 @@
+{
+  "name": "tiktok-ranking-client",
+  "version": "1.0.0",
+  "description": "Frontend for TikTok Ranking Video Generator",
+  "main": "index.js",
+  "scripts": {
+    "start": "python -m http.server 3000 --directory .",
+    "dev": "python -m http.server 3000 --directory ."
+  },
+  "keywords": ["tiktok", "ranking", "video"],
+  "author": "",
+  "license": "MIT"
+}

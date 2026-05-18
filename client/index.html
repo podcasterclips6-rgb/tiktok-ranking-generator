@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Ranking Video Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🎬 TikTok Ranking Generator</h1>
+                <p>Create vertical ranking videos from 5 TikTok clips</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Left Panel - Form -->
+            <div class="left-panel">
+                <div class="form-section">
+                    <h2>Video Configuration</h2>
+
+                    <!-- Banner Text -->
+                    <div class="form-group">
+                        <label for="bannerText">Ranking Title</label>
+                        <input 
+                            type="text" 
+                            id="bannerText" 
+                            placeholder="e.g., RANKING CUTEST CAT" 
+                            value="RANKING"
+                            class="input-text"
+                        >
+                    </div>
+
+                    <!-- TikTok Links -->
+                    <div class="form-group">
+                        <label>TikTok Video Links (5 required)</label>
+                        <div class="links-container">
+                            <div id="linksInput"></div>
+                        </div>
+                        <button class="btn-secondary" onclick="addLinkInput()">+ Add Link</button>
+                    </div>
+
+                    <!-- Ranking Labels -->
+                    <div class="form-group">
+                        <label>Ranking Labels (Optional)</label>
+                        <div class="labels-container" id="labelsContainer"></div>
+                    </div>
+
+                    <!-- Text Customization -->
+                    <div class="form-group">
+                        <label for="fontSize">Font Size</label>
+                        <input 
+                            type="number" 
+                            id="fontSize" 
+                            min="24" 
+                            max="80" 
+                            value="48"
+                            class="input-number"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="textColor">Text Color</label>
+                        <input 
+                            type="color" 
+                            id="textColor" 
+                            value="#ffffff"
+                            class="input-color"
+                        >
+                    </div>
+
+                    <!-- Background Music (Optional) -->
+                    <div class="form-group">
+                        <label for="bgMusic">Background Music (Optional)</label>
+                        <input 
+                            type="file" 
+                            id="bgMusic" 
+                            accept="audio/*"
+                            class="input-file"
+                        >
+                    </div>
+
+                    <!-- Generate Button -->
+                    <button id="generateBtn" class="btn-primary" onclick="generateVideo()">
+                        <span class="btn-text">Generate Video</span>
+                        <span class="spinner hidden"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Panel - Preview -->
+            <div class="right-panel">
+                <!-- Preview Card -->
+                <div class="preview-section">
+                    <div class="preview-header">
+                        <h2>Preview</h2>
+                        <span id="previewStatus" class="status-badge"></span>
+                    </div>
+
+                    <!-- Mock Preview -->
+                    <div class="preview-container">
+                        <div class="mock-video">
+                            <div class="mock-banner" id="mockBanner">RANKING</div>
+                            <div class="mock-content">
+                                <div class="ranking-list">
+                                    <div class="ranking-item">
+                                        <span class="rank-number">1</span>
+                                        <span class="rank-label" id="mockLabel1"></span>
+                                    </div>
+                                    <div class="ranking-item">
+                                        <span class="rank-number">2</span>
+                                        <span class="rank-label" id="mockLabel2"></span>
+                                    </div>
+                                    <div class="ranking-item">
+                                        <span class="rank-number">3</span>
+                                        <span class="rank-label" id="mockLabel3"></span>
+                                    </div>
+                                    <div class="ranking-item">
+                                        <span class="rank-number">4</span>
+                                        <span class="rank-label" id="mockLabel4"></span>
+                                    </div>
+                                    <div class="ranking-item">
+                                        <span class="rank-number">5</span>
+                                        <span class="rank-label" id="mockLabel5"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Progress Section -->
+                    <div id="progressSection" class="progress-section hidden">
+                        <div class="progress-info">
+                            <span id="progressMessage">Initializing...</span>
+                            <span id="progressPercent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div id="progressFill" class="progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <!-- Status Messages -->
+                    <div id="statusMessages" class="status-messages"></div>
+
+                    <!-- Download Link -->
+                    <div id="downloadSection" class="download-section hidden">
+                        <button class="btn-success" onclick="downloadVideo()">
+                            ⬇️ Download Video
+                        </button>
+                        <p class="info-text">Your video is ready to download!</p>
+                    </div>
+                </div>
+
+                <!-- Instructions Card -->
+                <div class="instructions-section">
+                    <h3>How it works</h3>
+                    <ol>
+                        <li>Paste 5 TikTok video links</li>
+                        <li>Customize the title and labels</li>
+                        <li>Click "Generate Video"</li>
+                        <li>Wait for processing (1-2 minutes)</li>
+                        <li>Download your 25-second ranking video</li>
+                    </ol>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>TikTok Ranking Generator v1.0 | Made with ❤️</p>
+        </footer>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast" class="toast"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
